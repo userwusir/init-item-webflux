@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'init-item-webflux'
+
+include 'app'
+include 'app:api-doc'
+include 'app:auth'
+include 'app:web'
+include 'app:backend'
+
+include 'common'
+include 'dao'
+include 'dao:test-dao'
+
+include 'client'
+
+include 'service'
+include 'service:test-service'
+
+include 'util'
+

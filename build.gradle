@@ -1,0 +1,66 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+ext {
+    hutoolAllVersion = '5.8.28'
+    knife4jVersion = '4.5.0'
+    knife4jUiVersion = '2.6.0'
+    openapiUiVersion = '4.5.0'
+    openfeignVersion = '4.1.3'
+    gatewayVersion = '4.1.3'
+    feignOkhttpVersion = '13.2.1'
+    mysqlDriverVersion = '8.0.33'
+    r2dbcPoolVersion = '1.0.1.RELEASE'
+    r2dbcDataVersion = '3.3.0'
+    mybatisPlusVersion = '3.5.7'
+    commonsIOVersion = '2.16.1'
+    jwtVersion = '4.4.0'
+    commonsLang3Version = '3.14.0'
+    commonsCompressVersion = '1.26.2'
+    springDataRedisVersion = '3.3.1'
+}
+
+subprojects {
+    def projectName = it.name
+
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'com.init'
+    version = '1.0'
+    sourceCompatibility = '17'
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+    }
+
+    dependencies {
+        if (projectName != 'util') implementation project(':util')
+
+        implementation "cn.hutool:hutool-all:${hutoolAllVersion}"
+
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    compileJava {
+        options.compilerArgs.add("-parameters")
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

@@ -1,0 +1,28 @@
+subprojects {
+    def projectName = it.name
+    if (projectName == 'api-doc') return
+
+    if (projectName.endsWith('sapi')) {
+        dependencies {
+            api "org.springframework.cloud:spring-cloud-starter-openfeign:${openfeignVersion}"
+            compileOnly project(':common')
+        }
+        return
+    }
+
+    dependencies {
+        implementation "org.springdoc:springdoc-openapi-starter-webflux-ui:${knife4jUiVersion}"
+        implementation "com.github.xiaoymin:knife4j-openapi3-ui:${openapiUiVersion}"
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        implementation 'org.springframework.boot:spring-boot-starter-aop'
+    }
+
+    dependencies {
+        implementation project(':common')
+        implementation "io.github.openfeign:feign-okhttp:${feignOkhttpVersion}"
+        if (findProject(":app:${projectName}-sapi") != null) implementation project(":app:${projectName}-sapi")
+
+        runtimeOnly "mysql:mysql-connector-java:${mysqlDriverVersion}"
+    }
+}

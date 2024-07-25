@@ -1,0 +1,13 @@
+dependencies {
+    api 'org.springframework.data:spring-data-redis'
+
+    api 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // 为什么引这么多，有bug，持续更新 <a href = "https://github.com/spring-projects/spring-boot/issues/28144" />
+    api "org.springframework.data:spring-data-r2dbc:${r2dbcDataVersion}"
+    api "io.r2dbc:r2dbc-pool:${r2dbcPoolVersion}"
+    api "mysql:mysql-connector-java:${mysqlDriverVersion}"
+    api "dev.miku:r2dbc-mysql:0.8.2.RELEASE"
+}

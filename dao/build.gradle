@@ -1,0 +1,9 @@
+subprojects {
+    dependencies {
+        compileOnly project(':common')
+
+        compileOnly 'com.fasterxml.jackson.core:jackson-core'
+        compileOnly 'com.fasterxml.jackson.core:jackson-databind'
+        compileOnly 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    }
+}

@@ -1,0 +1,10 @@
+dependencies {
+    api "commons-io:commons-io:${commonsIOVersion}"
+    api "org.apache.commons:commons-lang3:${commonsLang3Version}"
+    api "org.apache.commons:commons-compress:${commonsCompressVersion}"
+    api 'com.fasterxml.jackson.core:jackson-core'
+    api 'com.fasterxml.jackson.core:jackson-databind'
+    api 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    api "com.auth0:java-jwt:${jwtVersion}"
+    compileOnly 'org.slf4j:slf4j-api'
+}

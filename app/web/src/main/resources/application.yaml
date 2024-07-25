@@ -1,0 +1,34 @@
+server:
+  port: 8002
+
+spring:
+  profiles:
+    active: local
+
+  application:
+    name: web
+  main:
+    web-application-type: reactive
+
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/mytest
+    username: root
+    password: ------
+
+# 自定义日志过滤配置
+log:
+  ignore:
+    com-out:
+      enabled: true
+      ignorePatterns:
+        - /test
+
+logging:
+  level:
+    org.springframework.r2dbc: debug
+
+springdoc:
+  group-configs:
+    - group: 'user-api'
+      paths-to-match:
+        - /**
