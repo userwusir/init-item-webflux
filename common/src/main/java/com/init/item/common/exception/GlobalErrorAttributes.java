@@ -4,8 +4,10 @@ import com.init.item.common.consts.Const;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.DefaultErrorAttributes;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -24,6 +26,11 @@ import static com.init.item.common.enums.Code.INNER_SERVICE_FAIL;
  */
 @Component
 public class GlobalErrorAttributes extends DefaultErrorAttributes {
+
+    @Bean
+    public WebProperties.Resources resources() {
+        return new WebProperties.Resources();
+    }
 
     /**
      * 参数异常、业务异常、其他异常
@@ -85,9 +92,7 @@ public class GlobalErrorAttributes extends DefaultErrorAttributes {
         Map<String, Object> errorAttributes = new HashMap<>();
         errorAttributes.put("code", BAD_REQUEST.code);
         StringBuffer errorStr = new StringBuffer();
-        error.getAllErrors().forEach(it -> {
-            errorStr.append(it.getDefaultMessage()).append(";");
-        });
+        error.getAllErrors().forEach(it -> errorStr.append(it.getDefaultMessage()).append(";"));
         errorAttributes.put("error", errorStr);
         log.error("参数异常：", error);
         return errorAttributes;

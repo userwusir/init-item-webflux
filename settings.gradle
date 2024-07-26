@@ -12,6 +12,7 @@ include 'app:api-doc'
 include 'app:auth'
 include 'app:web'
 include 'app:backend'
+include 'app:backend-sapi'
 
 include 'common'
 include 'dao'

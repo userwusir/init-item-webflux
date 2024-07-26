@@ -10,11 +10,11 @@ WebFlux的初始化项目Demo，SpringBoot3 + WebFlux
 * 注解式、编程式接口Demo
 * r2dbc-mysql使用Demo
 * 文档聚合，knife4j-gateway引入
+* 服务间调用sapi规范demo
 
 TODO：
 
-* WebClient
+* WebClient Demo
 * Auth
-* server-api
-* mongodb
+* mongodb Demo
 * mybatis-r2dbc

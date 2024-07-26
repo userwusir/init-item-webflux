@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 /**
- * 捕获请求对象
+ * 捕获请求对象，获取请求体内容
  */
 public class BodyCaptureRequest extends ServerHttpRequestDecorator {
 

@@ -34,7 +34,7 @@ public class LogFilter implements WebFilter {
             return chain.filter(exchange);
         }
 
-        // 捕获Exchange来获取请求和响应的body
+        // 装饰器模式，捕获Exchange来获取请求和响应的body
         BodyCaptureExchange bodyCaptureExchange = new BodyCaptureExchange(exchange);
         return chain.filter(bodyCaptureExchange)
                 .doOnEach(signal -> {

@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 8003
 
 spring:
   profiles:
@@ -13,22 +13,16 @@ spring:
   r2dbc:
     url: r2dbc:mysql://localhost:3306/mytest
     username: root
-    password: 123123
+    password: -----
 
-# 自定义日志过滤配置
-log:
-  ignore:
-    com-out:
-      enabled: true
-      ignorePatterns:
-        - /test
 
 logging:
   level:
     org.springframework.r2dbc: debug
 
+
 springdoc:
   group-configs:
-    - group: 'user-api'
+    - group: 'server-api'
       paths-to-match:
         - /**

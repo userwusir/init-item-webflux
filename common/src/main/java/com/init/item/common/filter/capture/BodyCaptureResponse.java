@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 /**
- * 捕获响应对象
+ * 捕获响应对象，获取响应体内容
  */
 public class BodyCaptureResponse extends ServerHttpResponseDecorator {
 
@@ -26,8 +26,7 @@ public class BodyCaptureResponse extends ServerHttpResponseDecorator {
     @Nonnull
     @Override
     public Mono<Void> writeWith(@Nonnull Publisher<? extends DataBuffer> body) {
-        Flux<DataBuffer> buffer = Flux.from(body);
-        return super.writeWith(buffer.doOnNext(this::capture));
+        return super.writeWith(Flux.from(body).doOnNext(this::capture));
     }
 
     private void capture(DataBuffer buffer) {

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 捕获请求Exchange
+ * 捕获请求Exchange，获取表单数据信息
  */
 public class BodyCaptureExchange extends ServerWebExchangeDecorator {
 
