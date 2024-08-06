@@ -12,14 +12,10 @@ spring:
           uri: http://localhost:8002
           predicates:
             - Path=/web/**
-          filters:
-            - RewritePath=/web/?(?<segment>.*), /$\{segment}
         - id: backend
           uri: http://localhost:8003
           predicates:
             - Path=/backend/**
-          filters:
-            - RewritePath=/backend/?(?<segment>.*), /$\{segment}
 
 knife4j:
   gateway:
@@ -33,6 +29,6 @@ knife4j:
         order: 1
       - name: backend-sapi
         url: /backend/v3/api-docs/server-api
-        service-name: backend
         context-path: /backend
+        service-name: backend
         order: 2

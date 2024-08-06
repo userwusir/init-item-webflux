@@ -4,6 +4,8 @@ server:
 spring:
   profiles:
     active: local
+  webflux:
+    base-path: /web
 
   application:
     name: web
@@ -30,5 +32,6 @@ logging:
 springdoc:
   group-configs:
     - group: 'user-api'
-      paths-to-match:
-        - /**
+      packages-to-scan:
+        - com.init.item.web.controller
+        - com.init.item.web.handler
