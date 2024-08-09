@@ -2,13 +2,9 @@ package com.init.item.backend.api;
 
 import com.init.item.common.dto.sapi.backend.Test;
 import org.springframework.http.codec.multipart.FilePart;
-import org.springframework.http.codec.multipart.Part;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.stream.Collectors;
 
 /**
  * 后台 server-api 实现
@@ -29,7 +25,8 @@ public class TestApiImpl implements TestApi {
     }
 
     @Override
-    public Mono<String> postFormData(Flux<Part> parts) {
-        return parts.ofType(FilePart.class).flatMap(filePart -> Mono.just(filePart.filename())).collect(Collectors.joining(", "));
+    public Mono<String> postFormData(@RequestPart("file") FilePart part,
+                                     @RequestPart("name") String name) {
+        return Mono.just(part.filename() + "-" + name);
     }
 }

@@ -5,9 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.codec.multipart.FilePart;
-import org.springframework.http.codec.multipart.Part;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Tag(name = "测试后台sapi")
@@ -23,5 +21,6 @@ public interface TestApi {
 
     @PostMapping(value = "/form-data", consumes = "multipart/form-data")
     @Operation(summary = "测试后台sapi-form-data")
-    Mono<String> postFormData(@RequestBody Flux<Part> parts);
+    Mono<String> postFormData(@RequestPart("file") FilePart part,
+                              @RequestPart("name") String name);
 }
